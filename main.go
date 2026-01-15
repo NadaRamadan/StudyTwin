@@ -1,17 +1,18 @@
 package main
-
-import(
-	"Gemini "
-	"github.com/gin-gonic/gin"
+import (
+    "github.com/gin-gonic/gin"
+    swaggerFiles "github.com/swaggo/files"
+    ginSwagger "github.com/swaggo/gin-swagger"
+		"github.com/NadaRamadan/StudyTwin/routes"
 )
 
-function main(){
-
-	r := gin.Default()
+func main() {
+    r := gin.Default()
 
     routes.RegisterQuizRoutes(r)
-	routes.RegisterSummaryRoutes(r)
 
-	r.Run(":8080")
+    // Swagger endpoint
+    r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
+    r.Run(":8080")
 }

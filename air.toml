@@ -1,0 +1,18 @@
+# .air.toml - config for Air hot reload
+
+# Where to output the compiled binary
+[build]
+bin = "main.exe"      # output binary
+tmp_dir = ""          # disable tmp folder to avoid Windows path issues
+
+# Build options
+cmd = "go build -o main.exe main.go"   # build command
+
+# Directories to watch
+[watch]
+dirs = ["./"]          # watch current folder
+extensions = ["go"]    # watch .go files
+
+# Ignore these folders/files
+[ignore]
+dirs = ["tmp", "vendor", ".git"]
